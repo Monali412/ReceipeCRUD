@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Receipe Manager</title>
+</head>
+<body>
+<div align="center">
+    <h1>Receipe List</h1>
+    <a href="new">Create New Receipe</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Receipe ID</th>
+                <th>Name</th>
+                <th>Ingredients</th>
+                <th>Receipe Details</th>
+                <th>Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="receipe : ${listReceipe}">
+            	<td th:text="${receipe.id}">Receipe ID</td>
+                <td th:text="${receipe.name}">Name</td>
+                <td th:text="${receipe.ingredients}">Ingredients</td>
+                <td th:text="${receipe.receipe_detail}">Receipe Details</td>
+                <td th:text="${receipe.type}">Type</td>
+                <td>
+                	<a th:href="@{'/edit/' + ${receipe.id}}">Edit</a>
+                	&nbsp;&nbsp;&nbsp;
+                	<a th:href="@{'/delete/' + ${receipe.id}}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>    
+</body>
+</html>
